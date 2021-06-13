@@ -132,6 +132,8 @@ def edit_process():
     post=db.session.query(Post).filter(Post.post_id==post_id).first()
     post.edit_image(request.files['file'].filename)
     post.edit_comment(request.form['comment'])
+    img=request.files["file"]
+    img.save("./static/"+secure_filename(img.filename))
     db.session.commit()
     return redirect(url_for('main'))
 
