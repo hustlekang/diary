@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <meta charset="UTF-8">
+    {% with messages=get_flashed_messages() %}
+    {% if messages %}
+        <script type="text/javascript">
+            alert("{{messages[-1]}}");
+
+        </script>
+        {% endif %}
+    {% endwith %}
+
+</head>
+<body width="100%" height="100%">
+<form action="/upload_post" method="post" class="mainForm" enctype="multipart/form-data" >
+    <h1 style="color:#0431B4;">Upload</h1>
+
+    <div>
+    <input type="file" name="file" class="file" accept="image/*" >
+  </div>
+    <textarea name="comment" cols="50" rows="5" class="comment"></textarea>
+
+  <input type="submit" class="btn" value="Upload" style="margin-top: 10%">
+</form>
+
+</body>
+</html>

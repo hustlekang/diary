@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <meta charset="UTF-8">
+    {% with messages=get_flashed_messages() %}
+    {% if messages %}
+        <script type="text/javascript">
+            alert("{{messages[-1]}}");
+
+        </script>
+        {% endif %}
+    {% endwith %}
+</head>
+<body width="100%" height="100%">
+<div class="mainForm">
+    <h1 style="color:#0431B4;">{{ user_id }}</h1>
+<form action="http://localhost:5000/logout" method="post" >
+                        <input type="submit"  class="btn" value="Logout" style="margin-top: 10px;"name="post">
+        </form>
+    <form action="http://localhost:5000/upload" method="post" >
+                        <input type="submit"  class="btn" value="Post" style="margin-top: 10px;"name="post">
+        </form>
+
+    <table>
+        {% for content in post|sort(attribute='post_id',reverse = True)  %}
+            <tr>
+                <table>
+                    <tr>
+                        <img  alt="Image" width="300" height="300" src="{{ url_for('static',filename=content.image) }}">
+                    </tr>
+                    <tr>
+                        <div class="comment">{{ content.comment }}</div>
+                    </tr>
+                    <tr>
+                        <form action="http://localhost:5000/delete" method="post">
+                            <input type="hidden" name="post_id" value="{{ content.post_id }}">
+                            <input type="submit"  class="delete_btn" value="Delete" name="delete">
+                        </form>
+                        <form action="http://localhost:5000/edit" method="post">
+                            <input type="hidden" name="post_id" value="{{ content.post_id }}">
+                            <input type="submit"  class="edit_btn" value="Edit" name="edit">
+                         </form>
+                    </tr>
+                </table>
+            </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
