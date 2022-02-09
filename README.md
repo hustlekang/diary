@@ -2,14 +2,12 @@
 
 구현방법,이유 어려웠던점,해결방법
 
-~~~
-:black_small_square:Toggle
-:black_small_square:Modal
-:black_small_square:Tab
-:black_small_square:Tag
-:black_small_square:AutoComplete
-:black_small_square:ClicktoText
-~~~
+:black_small_square: Toggle
+:black_small_square: Modal
+:black_small_square: Tab
+:black_small_square: Tag
+:black_small_square: AutoComplete
+:black_small_square: ClicktoText
 ### :white_check_mark: Toggle
 ~~~
 on,off 를 state로 관리 (true,false)
